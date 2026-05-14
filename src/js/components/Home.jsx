@@ -6,7 +6,6 @@ import { useState } from "react";
 //create your first component
 const Home = () => {
     const [color, setColor] = useState("");
-    // Usamos este estado para saber si debemos mostrar la luz púrpura o no
     const [showPurple, setShowPurple] = useState(false);
 
     const alternarColor = () => {
@@ -15,8 +14,9 @@ const Home = () => {
         } else if (color === "yellow") {
             setColor("green");
         } else if (color === "green") {
-            // Si el púrpura está activado, vamos a él. Si no, volvemos a rojo.
             showPurple ? setColor("purple") : setColor("red");
+        } else if (color === "purple") {
+            setColor("red");
         } else {
             setColor("red");
         }
@@ -39,7 +39,6 @@ const Home = () => {
                     className={"light-circle green" + (color === "green" ? " glowing" : "")}
                 ></div>
                 
-                {/* Solo se renderiza si showPurple es true */}
                 {showPurple && (
                     <div
                         onClick={() => setColor("purple")}
